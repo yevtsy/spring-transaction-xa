@@ -20,5 +20,7 @@ public class IntegrationService {
     /*
         Notes how to connect several DataSources with txManager (two instances of PostgreSQL):
         http://www.coderanch.com/t/558790/Spring/Spring-JPA-Hibernate-multiple-Database
+
+        http://www.byteslounge.com/tutorials/spring-jta-multiple-resource-transactions-in-tomcat-with-atomikos-example
      */
 }
