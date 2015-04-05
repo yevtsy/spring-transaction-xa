@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.time.Instant;
 import java.util.Date;
 
@@ -17,17 +19,16 @@ public class FlyService implements IFlyService {
     private static final Logger _log = Logger.getLogger(FlyService.class);
 
     @Autowired
-    private FlyRepository flyRepository;
+    @PersistenceContext(unitName="PersistenceUnit1")
+    private EntityManager entityManager;
 
     @Override
-    @Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public void order(final FlyOrder flyOrder) throws Exception {
         if (flyOrder.getDate().before(Date.from(Instant.now())))
             throw new Exception("Cannot book tickets before current");
 
         _log.debug("Fly booking has been successfully");
 
-
-        flyRepository.save(flyOrder);
+        entityManager.persist(flyOrder);
     }
 }
