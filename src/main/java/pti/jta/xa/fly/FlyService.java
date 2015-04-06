@@ -2,9 +2,7 @@ package pti.jta.xa.fly;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -14,12 +12,12 @@ import java.util.Date;
 /**
  * Created by yevhen.tsyba on 29.03.2015.
  */
-@Service
+@Component
 public class FlyService implements IFlyService {
     private static final Logger _log = Logger.getLogger(FlyService.class);
 
     @Autowired
-    @PersistenceContext(unitName="PersistenceUnit1")
+    @PersistenceContext(unitName = "PersistenceUnit1")
     private EntityManager entityManager;
 
     @Override

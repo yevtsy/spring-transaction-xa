@@ -1,7 +1,7 @@
 package pti.jta.xa.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import pti.jta.xa.fly.FlyOrder;
 import pti.jta.xa.fly.IFlyService;
@@ -11,7 +11,7 @@ import pti.jta.xa.hotel.IHotelService;
 /**
  * Created by yevhen.tsyba on 29.03.2015.
  */
-@Service
+@Component
 public class TransactionService implements TransactionServiceIntf {
 
     @Autowired
