@@ -9,9 +9,9 @@
 		<class>pti.jta.xa.fly.FlyOrder</class>
 		<properties>
 			<property name="hibernate.transaction.manager_lookup_class"
-			          value="com.atomikos.icatch.jta.hibernate3.TransactionManagerLookup" />
+			          value="com.atomikos.icatch.jta.hibernate3.TransactionManagerLookup"/>
 			<property name="hibernate.transaction.factory_class"
-			          value="org.hibernate.transaction.CMTTransactionFactory" />
+			          value="org.hibernate.transaction.CMTTransactionFactory"/>
 		</properties>
 	</persistence-unit>
 
@@ -19,9 +19,9 @@
 		<class>pti.jta.xa.hotel.HotelOrder</class>
 		<properties>
 			<property name="hibernate.transaction.manager_lookup_class"
-			          value="com.atomikos.icatch.jta.hibernate3.TransactionManagerLookup" />
+			          value="com.atomikos.icatch.jta.hibernate3.TransactionManagerLookup"/>
 			<property name="hibernate.transaction.factory_class"
-			          value="org.hibernate.transaction.CMTTransactionFactory" />
+			          value="org.hibernate.transaction.CMTTransactionFactory"/>
 		</properties>
 	</persistence-unit>
 

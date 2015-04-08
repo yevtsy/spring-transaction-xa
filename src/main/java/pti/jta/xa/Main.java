@@ -3,6 +3,7 @@ package pti.jta.xa;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import pti.jta.xa.demo.TransactionService;
+import pti.jta.xa.demo.TransactionServiceIntf;
 import pti.jta.xa.fly.FlyOrder;
 import pti.jta.xa.hotel.HotelOrder;
 
@@ -15,7 +16,7 @@ public class Main {
         ApplicationContext context =
                 new ClassPathXmlApplicationContext(new String[]{"spring.xml"});
 
-        TransactionService transactionService = (TransactionService) context.getBean("transactionService");
+        TransactionServiceIntf transactionService = (TransactionServiceIntf) context.getBean("transactionService");
         try {
             transactionService.persist(new HotelOrder(), new FlyOrder());
         } catch (Exception e) {
