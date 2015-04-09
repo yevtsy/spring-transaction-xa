@@ -12,18 +12,15 @@
 	<properties>
 		<junit-version>4.4</junit-version>
 		<!--<spring-version>4.1.6.RELEASE</spring-version>-->
+		<hibernate-version>3.5.1-Final</hibernate-version>
 		<spring-version>4.0.6.RELEASE</spring-version>
 		<atomikos.version>3.8.0</atomikos.version>
-		<hibernate.version>4.1.9.Final</hibernate.version>
+		<hibernate.version>4.3.7.Final</hibernate.version>
+		<postgresql.version>8.4-702.jdbc4</postgresql.version>
+		<java.version>1.8</java.version>
 	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>${junit-version}</version>
-			<scope>test</scope>
-		</dependency>
 		<!-- Testng -->
 		<dependency>
 			<groupId>org.testng</groupId>
@@ -32,6 +29,7 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!-- SPRING -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
@@ -57,6 +55,8 @@
 			<artifactId>spring-test</artifactId>
 			<version>${spring-version}</version>
 		</dependency>
+
+		<!-- HIBERNATE -->
 		<dependency>
 			<groupId>org.hibernate.javax.persistence</groupId>
 			<artifactId>hibernate-jpa-2.0-api</artifactId>
@@ -65,30 +65,30 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
-			<version>${hibernate.version}</version>
-			<exclusions>
-				<exclusion>
-					<groupId>cglib</groupId>
-					<artifactId>cglib</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>dom4j</groupId>
-					<artifactId>dom4j</artifactId>
-				</exclusion>
-			</exclusions>
+			<version>${hibernate-version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-oscache</artifactId>
+			<version>${hibernate-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate-version}</version>
+		</dependency>
+
+
 		<dependency>
 			<groupId>com.atomikos</groupId>
 			<artifactId>transactions-jta</artifactId>
 			<version>${atomikos.version}</version>
 		</dependency>
-
 		<dependency>
 			<groupId>com.atomikos</groupId>
 			<artifactId>transactions-jdbc</artifactId>
 			<version>${atomikos.version}</version>
 		</dependency>
-
 		<dependency>
 			<groupId>com.atomikos</groupId>
 			<artifactId>transactions-hibernate3</artifactId>
@@ -101,12 +101,7 @@
 			</exclusions>
 		</dependency>
 
-		<dependency>
-			<groupId>dom4j</groupId>
-			<artifactId>dom4j</artifactId>
-			<version>1.6.1</version>
-		</dependency>
-
+		<!-- LOGGING -->
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
@@ -127,11 +122,19 @@
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>1.6.1</version>
 		</dependency>
+
+		<!-- DATABASE -->
 		<dependency>
 			<groupId>postgresql</groupId>
 			<artifactId>postgresql</artifactId>
-			<version>8.4-702.jdbc4</version>
+			<version>${postgresql.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>com.ibatis</groupId>
+			<artifactId>ibatis2-common</artifactId>
+			<version>2.1.5.582</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -142,8 +145,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.3.2</version>
 				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
 				</configuration>
 			</plugin>
 		</plugins>

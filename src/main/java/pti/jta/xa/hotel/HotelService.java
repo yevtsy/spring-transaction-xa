@@ -26,5 +26,6 @@ public class HotelService implements IHotelService {
         _log.debug("Hotel order successfully has been stored to database");
 
         entityManager.persist(hotelOrder);
+        System.out.println("HOTEL service commited: " + entityManager.contains(hotelOrder));
     }
 }

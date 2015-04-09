@@ -1,6 +1,7 @@
 package pti.jta.xa.hotel;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -8,10 +9,10 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "TBL_HOTEL_BOOKING")
-public class HotelOrder {
+public class HotelOrder{
+
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "HOTELGEN")
-    @SequenceGenerator(name = "HOTELGEN", sequenceName = "hotel_booking_id_seq")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(name = "client_name")

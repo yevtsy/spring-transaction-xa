@@ -27,8 +27,8 @@ public class RunTests extends AbstractTestNGSpringContextTests {
         FlyOrder flyOrder = new FlyOrder();
         flyOrder.setClientName("Nik");
         flyOrder.setFlyNumber("KLM 1382");
-        flyOrder.setFrom("KBP");
-        flyOrder.setTo("AMS");
+        flyOrder.setLeave("KBP");
+        flyOrder.setArrive("AMS");
 
         return flyOrder;
     }

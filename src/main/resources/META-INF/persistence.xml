@@ -12,6 +12,8 @@
 			          value="com.atomikos.icatch.jta.hibernate3.TransactionManagerLookup"/>
 			<property name="hibernate.transaction.factory_class"
 			          value="org.hibernate.transaction.CMTTransactionFactory"/>
+			<!-- Create/update tables automatically using mapping metadata -->
+			<property name="hibernate.hbm2ddl.auto" value="create"/>
 		</properties>
 	</persistence-unit>
 
@@ -22,6 +24,9 @@
 			          value="com.atomikos.icatch.jta.hibernate3.TransactionManagerLookup"/>
 			<property name="hibernate.transaction.factory_class"
 			          value="org.hibernate.transaction.CMTTransactionFactory"/>
+			<!-- Create/update tables automatically using mapping metadata -->
+			<property name="hibernate.hbm2ddl.auto" value="create"/>
+
 		</properties>
 	</persistence-unit>
 

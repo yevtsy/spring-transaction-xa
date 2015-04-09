@@ -28,5 +28,6 @@ public class FlyService implements IFlyService {
         _log.debug("Fly booking has been successfully");
 
         entityManager.persist(flyOrder);
+        System.out.println("FLY service commited: " + entityManager.contains(flyOrder));
     }
 }

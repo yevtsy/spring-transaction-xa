@@ -1,6 +1,7 @@
 package pti.jta.xa.fly;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -8,10 +9,9 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "TBL_FLY_BOOKING")
-public class FlyOrder {
+public class FlyOrder{
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "FLYGEN")
-    @SequenceGenerator(name = "FLYGEN", sequenceName = "fly_booking_id_seq")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(name = "client_name")
@@ -21,10 +21,10 @@ public class FlyOrder {
     private String flyNumber;
 
     @Column
-    private String from;
+    private String leave;
 
     @Column
-    private String to;
+    private String arrive;
 
     @Column
     private Date date;
@@ -37,22 +37,21 @@ public class FlyOrder {
         this.date = date;
     }
 
-    public String getTo() {
-
-        return to;
+    public String getArrive() {
+        return arrive;
     }
 
-    public void setTo(final String to) {
-        this.to = to;
+    public void setArrive(final String arrive) {
+        this.arrive = arrive;
     }
 
-    public String getFrom() {
+    public String getLeave() {
 
-        return from;
+        return leave;
     }
 
-    public void setFrom(final String from) {
-        this.from = from;
+    public void setLeave(final String leave) {
+        this.leave = leave;
     }
 
     public String getFlyNumber() {

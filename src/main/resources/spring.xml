@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:p="http://www.springframework.org/schema/p"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
@@ -11,85 +10,91 @@
     http://www.springframework.org/schema/tx
     http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-    <context:annotation-config/>
-    <tx:annotation-driven/>
-    <tx:jta-transaction-manager/>
+	<context:annotation-config/>
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	<tx:jta-transaction-manager/>
 
-    <context:component-scan base-package="pti.jta.xa"/>
+	<context:component-scan base-package="pti.jta.xa"/>
 
-    <bean id="entityManagerFactory1"
-          class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-        <property name="persistenceUnitName" value="PersistenceUnit1"/>
-        <property name="dataSource" ref="dataSource1"/>
-        <property name="jpaVendorAdapter">
-            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-                <property name="showSql" value="true"/>
-                <property name="databasePlatform"
-                          value="org.hibernate.dialect.PostgreSQL82Dialect"/>
-            </bean>
-        </property>
-    </bean>
+	<bean id="entityManagerFactory1"
+	      class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceXmlLocation" value="classpath:META-INF/persistence.xml"/>
+		<property name="persistenceUnitName" value="PersistenceUnit1"/>
+		<property name="dataSource" ref="dataSource1"/>
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+				<property name="showSql" value="true"/>
+				<property name="databasePlatform"
+				          value="org.hibernate.dialect.PostgresPlusDialect"/>
+			</bean>
+		</property>
+	</bean>
 
-    <bean id="entityManagerFactory2"
-          class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-        <property name="persistenceUnitName" value="PersistenceUnit2"/>
-        <property name="dataSource" ref="dataSource2"/>
-        <property name="jpaVendorAdapter">
-            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-                <property name="showSql" value="true"/>
-                <property name="databasePlatform"
-                          value="org.hibernate.dialect.PostgreSQL82Dialect"/>
-            </bean>
-        </property>
-    </bean>
+	<bean id="dataSource1" class="com.atomikos.jdbc.AtomikosDataSourceBean"
+	      init-method="init" destroy-method="close">
+		<property name="uniqueResourceName" value="DataSource1"/>
+		<property name="xaDataSource" ref="dataBase1"/>
+		<property name="maxPoolSize" value="20"/>
+		<property name="poolSize" value="3"/>
+		<!--<property name="testQuery" value="SELECT datname FROM pg_stat_activity"/>-->
+	</bean>
 
-    <bean id="dataSource1" class="com.atomikos.jdbc.AtomikosDataSourceBean"
-          init-method="init" destroy-method="close">
-        <property name="uniqueResourceName" value="DataSource1"/>
-        <property name="xaDataSource" ref="dataBase1"/>
-        <property name="poolSize" value="3"/>
-    </bean>
+	<bean id="dataBase1" class="org.postgresql.xa.PGXADataSource"
+	      lazy-init="true">
+		<property name="databaseName" value="hotels"/>
+		<property name="serverName" value="localhost"/>
+		<property name="portNumber" value="5432"/>
+		<property name="user" value="admin"/>
+		<property name="password" value="admin"/>
+	</bean>
 
-    <bean id="dataBase1" class="org.postgresql.xa.PGXADataSource"
-          lazy-init="true">
-        <property name="databaseName" value="db1"/>
-        <property name="serverName" value="localhost"/>
-        <property name="portNumber" value="5432"/>
-        <property name="user" value="user1"/>
-        <property name="password" value="passwd1"/>
-    </bean>
+	<bean id="entityManagerFactory2"
+	      class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceXmlLocation" value="classpath:META-INF/persistence.xml"/>
+		<property name="persistenceUnitName" value="PersistenceUnit2"/>
+		<property name="dataSource" ref="dataSource2"/>
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+				<property name="showSql" value="true"/>
+				<property name="databasePlatform"
+				          value="org.hibernate.dialect.PostgresPlusDialect"/>
+			</bean>
+		</property>
+	</bean>
 
-    <bean id="dataSource2" class="com.atomikos.jdbc.AtomikosDataSourceBean"
-          init-method="init" destroy-method="close">
-        <property name="uniqueResourceName" value="DataSource2"/>
-        <property name="xaDataSource" ref="dataBase2"/>
-        <property name="poolSize" value="3"/>
-    </bean>
+	<bean id="dataSource2" class="com.atomikos.jdbc.AtomikosDataSourceBean"
+	      init-method="init" destroy-method="close">
+		<property name="uniqueResourceName" value="DataSource2"/>
+		<property name="xaDataSource" ref="dataBase2"/>
+		<property name="maxPoolSize" value="20"/>
+		<property name="poolSize" value="3"/>
+		<!--<property name="testQuery" value="SELECT datname FROM pg_stat_activity"/>-->
+	</bean>
 
-    <bean id="dataBase2" class="org.postgresql.xa.PGXADataSource"
-          lazy-init="true">
-        <property name="databaseName" value="db2"/>
-        <property name="serverName" value="localhost"/>
-        <property name="portNumber" value="5432"/>
-        <property name="user" value="user2"/>
-        <property name="password" value="passwd2"/>
-    </bean>
+	<bean id="dataBase2" class="org.postgresql.xa.PGXADataSource"
+	      lazy-init="true">
+		<property name="databaseName" value="flies"/>
+		<property name="serverName" value="localhost"/>
+		<property name="portNumber" value="5432"/>
+		<property name="user" value="admin"/>
+		<property name="password" value="admin"/>
+	</bean>
 
-    <bean id="atomikosTransactionManager" class="com.atomikos.icatch.jta.UserTransactionManager"
-          init-method="init" destroy-method="close">
-        <property name="forceShutdown" value="false"/>
-    </bean>
+	<bean id="atomikosTransactionManager" class="com.atomikos.icatch.jta.UserTransactionManager"
+	      init-method="init" destroy-method="close">
+		<property name="forceShutdown" value="false"/>
+	</bean>
 
-    <bean id="atomikosUserTransaction" class="com.atomikos.icatch.jta.J2eeUserTransaction">
-        <property name="transactionTimeout" value="300"/>
-    </bean>
+	<bean id="atomikosUserTransaction" class="com.atomikos.icatch.jta.J2eeUserTransaction">
+		<property name="transactionTimeout" value="300"/>
+	</bean>
 
-    <bean id="transactionManager"
-          class="org.springframework.transaction.jta.JtaTransactionManager"
-          depends-on="atomikosTransactionManager,atomikosUserTransaction">
-        <property name="transactionManager" ref="atomikosTransactionManager"/>
-        <property name="userTransaction" ref="atomikosUserTransaction"/>
-        <property name="allowCustomIsolationLevels" value="true"/>
-    </bean>
+	<bean id="transactionManager"
+	      class="org.springframework.transaction.jta.JtaTransactionManager"
+	      depends-on="atomikosTransactionManager,atomikosUserTransaction">
+		<property name="transactionManager" ref="atomikosTransactionManager"/>
+		<property name="userTransaction" ref="atomikosUserTransaction"/>
+		<property name="allowCustomIsolationLevels" value="true"/>
+	</bean>
 
 </beans>

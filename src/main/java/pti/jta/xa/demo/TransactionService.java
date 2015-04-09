@@ -23,8 +23,8 @@ public class TransactionService implements TransactionServiceIntf {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void persist(final HotelOrder hotelOrder, final FlyOrder flyOrder) throws Exception {
-        hotelService.order(hotelOrder);
         flyService.order(flyOrder);
+        hotelService.order(hotelOrder);
     }
 
     public IHotelService getHotelService() {
