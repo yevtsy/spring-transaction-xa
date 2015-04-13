@@ -1,12 +1,13 @@
-package pti.jta.xa.demo;
+package pti.jta.xa.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import pti.jta.xa.fly.FlyService;
-import pti.jta.xa.fly.IFlyService;
-import pti.jta.xa.hotel.HotelService;
-import pti.jta.xa.hotel.IHotelService;
+import pti.jta.xa.services.impl.FlyService;
+import pti.jta.xa.services.IFlyService;
+import pti.jta.xa.services.impl.HotelService;
+import pti.jta.xa.services.IHotelService;
+import pti.jta.xa.services.impl.TransactionService;
 
 /**
  * Created by yevhen.tsyba on 05.04.2015.

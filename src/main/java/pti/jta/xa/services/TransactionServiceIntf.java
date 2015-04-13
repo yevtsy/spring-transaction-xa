@@ -1,7 +1,7 @@
-package pti.jta.xa.demo;
+package pti.jta.xa.services;
 
-import pti.jta.xa.fly.FlyOrder;
-import pti.jta.xa.hotel.HotelOrder;
+import pti.jta.xa.dao.fly.FlyOrder;
+import pti.jta.xa.dao.hotel.HotelOrder;
 
 /**
  * Created by yevhen.tsyba on 04.04.2015.

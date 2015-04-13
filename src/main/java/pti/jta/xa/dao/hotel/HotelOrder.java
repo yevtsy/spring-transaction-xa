@@ -1,4 +1,4 @@
-package pti.jta.xa.hotel;
+package pti.jta.xa.dao.hotel;
 
 import javax.persistence.*;
 import java.io.Serializable;

@@ -35,8 +35,8 @@
 		<property name="uniqueResourceName" value="DataSource1"/>
 		<property name="xaDataSource" ref="dataBase1"/>
 		<property name="maxPoolSize" value="20"/>
-		<property name="poolSize" value="3"/>
-		<!--<property name="testQuery" value="SELECT datname FROM pg_stat_activity"/>-->
+		<property name="poolSize" value="15"/>
+		<property name="testQuery" value="SELECT * FROM tbl_fly_booking"/>
 	</bean>
 
 	<bean id="dataBase1" class="org.postgresql.xa.PGXADataSource"
@@ -67,8 +67,8 @@
 		<property name="uniqueResourceName" value="DataSource2"/>
 		<property name="xaDataSource" ref="dataBase2"/>
 		<property name="maxPoolSize" value="20"/>
-		<property name="poolSize" value="3"/>
-		<!--<property name="testQuery" value="SELECT datname FROM pg_stat_activity"/>-->
+		<property name="poolSize" value="15"/>
+		<property name="testQuery" value="SELECT * FROM tbl_hotel_booking"/>
 	</bean>
 
 	<bean id="dataBase2" class="org.postgresql.xa.PGXADataSource"

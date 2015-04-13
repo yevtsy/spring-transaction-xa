@@ -1,4 +1,4 @@
-package pti.jta.xa.fly;
+package pti.jta.xa.dao.fly;
 
 import javax.persistence.*;
 import java.io.Serializable;

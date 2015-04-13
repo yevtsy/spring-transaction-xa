@@ -1,12 +1,13 @@
-package pti.jta.xa.demo;
+package pti.jta.xa.services.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-import pti.jta.xa.fly.FlyOrder;
-import pti.jta.xa.fly.IFlyService;
-import pti.jta.xa.hotel.HotelOrder;
-import pti.jta.xa.hotel.IHotelService;
+import pti.jta.xa.dao.fly.FlyOrder;
+import pti.jta.xa.services.IFlyService;
+import pti.jta.xa.dao.hotel.HotelOrder;
+import pti.jta.xa.services.IHotelService;
+import pti.jta.xa.services.TransactionServiceIntf;
 
 /**
  * Created by yevhen.tsyba on 29.03.2015.

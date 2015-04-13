@@ -1,4 +1,6 @@
-package pti.jta.xa.fly;
+package pti.jta.xa.services;
+
+import pti.jta.xa.dao.fly.FlyOrder;
 
 /**
  * Created by yevhen.tsyba on 29.03.2015.

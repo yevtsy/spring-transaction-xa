@@ -1,4 +1,6 @@
-package pti.jta.xa.hotel;
+package pti.jta.xa.services;
+
+import pti.jta.xa.dao.hotel.HotelOrder;
 
 /**
  * Created by yevhen.tsyba on 29.03.2015.

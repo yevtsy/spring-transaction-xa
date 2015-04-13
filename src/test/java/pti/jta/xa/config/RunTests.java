@@ -1,11 +1,12 @@
-package pti.jta.xa.demo;
+package pti.jta.xa.config;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
-import pti.jta.xa.fly.FlyOrder;
-import pti.jta.xa.hotel.HotelOrder;
+import pti.jta.xa.dao.fly.FlyOrder;
+import pti.jta.xa.dao.hotel.HotelOrder;
+import pti.jta.xa.services.TransactionServiceIntf;
 
 import java.time.Instant;
 import java.time.Period;

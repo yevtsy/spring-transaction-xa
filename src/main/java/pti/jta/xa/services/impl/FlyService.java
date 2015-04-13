@@ -1,8 +1,11 @@
-package pti.jta.xa.fly;
+package pti.jta.xa.services.impl;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+import pti.jta.xa.dao.fly.FlyOrder;
+import pti.jta.xa.services.IFlyService;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -21,6 +24,7 @@ public class FlyService implements IFlyService {
     private EntityManager entityManager;
 
     @Override
+    @Transactional
     public void order(final FlyOrder flyOrder) throws Exception {
         if (flyOrder.getDate().before(Date.from(Instant.now())))
             throw new Exception("Cannot book tickets before current");

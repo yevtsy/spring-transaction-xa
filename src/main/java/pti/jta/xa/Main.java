@@ -1,19 +1,11 @@
 package pti.jta.xa;
 
-import com.ibatis.common.jdbc.ScriptRunner;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
-import pti.jta.xa.demo.TransactionService;
-import pti.jta.xa.demo.TransactionServiceIntf;
-import pti.jta.xa.fly.FlyOrder;
-import pti.jta.xa.hotel.HotelOrder;
+import pti.jta.xa.services.TransactionServiceIntf;
+import pti.jta.xa.dao.fly.FlyOrder;
+import pti.jta.xa.dao.hotel.HotelOrder;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.Reader;
-import java.sql.*;
 import java.time.Instant;
 import java.time.Period;
 import java.util.Date;
@@ -24,30 +16,6 @@ import java.util.Date;
 public class Main {
 
     public static void main(String[] args) throws ClassNotFoundException {
-
-//        ResourceDatabasePopulator rdp = new ResourceDatabasePopulator();
-//        rdp.addScript(new ClassPathResource("sql/ddl-posgre-hotel.sql"));
-//        rdp.addScript(new ClassPathResource("sql/ddl-posgre-fly.sql"));
-
-//        Class.forName("org.postgresql.Driver");
-//
-//        Connection connection = null;
-//
-//        try {
-//            connection = DriverManager.getConnection(
-//                    "jdbc:postgresql://127.0.0.1:5432/flies", "admin",
-//                    "admin");
-//            Statement st = connection.createStatement();
-//            ResultSet res = st.executeQuery("select * from tbl_fly_booking");
-//            res.close();
-//            st.close();
-////            rdp.populate(connection);
-//        } catch (SQLException e) {
-//
-//            System.out.println("Connection Failed! Check output console");
-//            e.printStackTrace();
-//            return;
-//        }
 
         ApplicationContext context =
                 new ClassPathXmlApplicationContext(new String[]{"spring.xml"});
