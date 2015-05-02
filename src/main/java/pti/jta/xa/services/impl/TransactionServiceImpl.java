@@ -4,22 +4,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import pti.jta.xa.dao.fly.FlyOrder;
-import pti.jta.xa.services.IFlyService;
 import pti.jta.xa.dao.hotel.HotelOrder;
-import pti.jta.xa.services.IHotelService;
-import pti.jta.xa.services.TransactionServiceIntf;
+import pti.jta.xa.services.FlyService;
+import pti.jta.xa.services.HotelService;
+import pti.jta.xa.services.TransactionService;
 
 /**
  * Created by yevhen.tsyba on 29.03.2015.
  */
 @Component
-public class TransactionService implements TransactionServiceIntf {
+public class TransactionServiceImpl implements TransactionService {
 
     @Autowired
-    private IFlyService flyService;
+    private FlyService flyService;
 
     @Autowired
-    private IHotelService hotelService;
+    private HotelService hotelService;
 
     @Override
     @Transactional(rollbackFor = Exception.class)
@@ -28,20 +28,20 @@ public class TransactionService implements TransactionServiceIntf {
         hotelService.order(hotelOrder);
     }
 
-    public IHotelService getHotelService() {
+    public HotelService getHotelService() {
         return hotelService;
     }
 
-    public void setHotelService(final IHotelService hotelService) {
+    public void setHotelService(final HotelService hotelService) {
         this.hotelService = hotelService;
     }
 
-    public IFlyService getFlyService() {
+    public FlyService getFlyService() {
 
         return flyService;
     }
 
-    public void setFlyService(final IFlyService flyService) {
+    public void setFlyService(final FlyService flyService) {
         this.flyService = flyService;
     }
 }

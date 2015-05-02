@@ -10,13 +10,13 @@
 		<properties>
 			<property name="hibernate.transaction.manager_lookup_class"
 			          value="com.atomikos.icatch.jta.hibernate3.TransactionManagerLookup"/>
-			<property name="hibernate.transaction.factory_class"
-			          value="org.hibernate.transaction.CMTTransactionFactory"/>
 			<!-- Create/update tables automatically using mapping metadata -->
-			<property name="hibernate.hbm2ddl.auto" value="create"/>
+			<property name="hibernate.hbm2ddl.auto" value="update"/>
 			<property name="show_sql" value="true"/>
 			<property name="format_sql" value="true"/>
 			<property name="use_sql_comments" value="true"/>
+			<property name="javax.persistence.transactionType" value="JTA"/>
+			<property name="hibernate.current_session_context_class" value="jta"/>
 		</properties>
 	</persistence-unit>
 
@@ -28,9 +28,11 @@
 			<property name="hibernate.transaction.factory_class"
 			          value="org.hibernate.transaction.CMTTransactionFactory"/>
 			<!-- Create/update tables automatically using mapping metadata -->
-			<property name="hibernate.hbm2ddl.auto" value="create"/>
+			<property name="hibernate.hbm2ddl.auto" value="update"/>
 			<property name="show_sql" value="true"/>
 			<property name="format_sql" value="true"/>
+			<property name="javax.persistence.transactionType" value="JTA"/>
+			<property name="hibernate.current_session_context_class" value="jta"/>
 		</properties>
 	</persistence-unit>
 

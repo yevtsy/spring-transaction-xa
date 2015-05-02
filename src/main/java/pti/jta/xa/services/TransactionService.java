@@ -6,6 +6,6 @@ import pti.jta.xa.dao.hotel.HotelOrder;
 /**
  * Created by yevhen.tsyba on 04.04.2015.
  */
-public interface TransactionServiceIntf {
+public interface TransactionService {
     void persist(HotelOrder hotelOrder, FlyOrder flyOrder) throws Exception;
 }

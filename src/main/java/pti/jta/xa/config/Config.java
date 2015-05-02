@@ -3,30 +3,30 @@ package pti.jta.xa.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import pti.jta.xa.services.impl.FlyService;
-import pti.jta.xa.services.IFlyService;
-import pti.jta.xa.services.impl.HotelService;
-import pti.jta.xa.services.IHotelService;
-import pti.jta.xa.services.impl.TransactionService;
+import pti.jta.xa.services.FlyService;
+import pti.jta.xa.services.HotelService;
+import pti.jta.xa.services.impl.FlyServiceImpl;
+import pti.jta.xa.services.impl.HotelServiceImpl;
+import pti.jta.xa.services.impl.TransactionServiceImpl;
 
 /**
  * Created by yevhen.tsyba on 05.04.2015.
  */
 @Configuration
-@ComponentScan
+@ComponentScan(basePackages = "pti.jta.xa")
 public class Config {
     @Bean
-    public IFlyService flyService(){
-        return new FlyService();
+    public FlyService flyService() {
+        return new FlyServiceImpl();
     }
 
     @Bean
-    public IHotelService hotelService(){
-        return new HotelService();
+    public HotelService hotelService() {
+        return new HotelServiceImpl();
     }
 
     @Bean
-    public TransactionService transactionService(){
-        return new TransactionService();
+    public TransactionServiceImpl transactionService() {
+        return new TransactionServiceImpl();
     }
 }

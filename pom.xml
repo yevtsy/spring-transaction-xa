@@ -14,7 +14,7 @@
 		<!--<spring-version>4.1.6.RELEASE</spring-version>-->
 		<hibernate-version>3.5.1-Final</hibernate-version>
 		<spring-version>4.0.6.RELEASE</spring-version>
-		<atomikos.version>3.8.0</atomikos.version>
+		<atomikos.version>4.0.0M4</atomikos.version>
 		<hibernate.version>4.3.7.Final</hibernate.version>
 		<postgresql.version>8.4-702.jdbc4</postgresql.version>
 		<java.version>1.8</java.version>

@@ -2,7 +2,7 @@ package pti.jta.xa;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import pti.jta.xa.services.TransactionServiceIntf;
+import pti.jta.xa.services.TransactionService;
 import pti.jta.xa.dao.fly.FlyOrder;
 import pti.jta.xa.dao.hotel.HotelOrder;
 
@@ -20,12 +20,29 @@ public class Main {
         ApplicationContext context =
                 new ClassPathXmlApplicationContext(new String[]{"spring.xml"});
 
-        TransactionServiceIntf transactionService = (TransactionServiceIntf) context.getBean("transactionService");
+        TransactionService transactionService = (TransactionService) context.getBean("transactionService");
+
+        System.out.println("********  Correct transaction: store data to database  *********");
         try {
             transactionService.persist(getCorrectHotelOrder(), getCorrectFlyOrder());
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        System.out.println("********  Incorrect transaction: data doesn't store to database  *********");
+        try {
+            transactionService.persist(getCorrectHotelOrder(), getIncorrectFlyOrder());
+        } catch (Exception e) {
+            System.out.println("Two-phase commit wasn't successful");
+            e.printStackTrace();
+        }
+    }
+
+    private static FlyOrder getIncorrectFlyOrder() {
+        FlyOrder flyOrder = getCommonFlyOrder();
+        flyOrder.setDate(Date.from(Instant.now().minus(Period.ofDays(3))));
+
+        return flyOrder;
     }
 
     static FlyOrder getCommonFlyOrder() {
